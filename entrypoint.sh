@@ -1,1 +1,0 @@
-Echo "Coucou CI/CD"
