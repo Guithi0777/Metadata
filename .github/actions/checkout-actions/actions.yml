@@ -1,0 +1,15 @@
+name: 'My Checkout Action'
+description: 'Custom checkout action'
+author: 'Your Name'
+inputs:
+  repository:
+    description: 'Repository to checkout'
+    required: true
+    default: ${{ github.repository }}
+  ref:
+    description: 'Ref to checkout'
+    required: false
+    default: 'refs/heads/main'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
