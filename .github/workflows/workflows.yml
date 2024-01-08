@@ -1,0 +1,28 @@
+---
+
+name: My Workflow
+
+on:
+  workflow_dispatch:
+    
+jobs:
+
+  Chouette:
+    runs-on: ubuntu-latest
+    environment:
+      name: Checkout repo
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+  
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: ./.github/actions/my-checkout-action
+        with:
+          repository: ${{ github.repository }}
+          ref: 'refs/heads/main'
+
+      - name: Run My Action
+        run: echo "Hello from my custom checkout action!"
