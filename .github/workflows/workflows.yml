@@ -14,7 +14,7 @@ jobs:
 
       - name: testaction
         id: testaction
-        uses: .
+        uses: action/git_update.sh/testaction@v2
         with:
           version-type: major
 
