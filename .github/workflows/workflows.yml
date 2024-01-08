@@ -1,31 +1,22 @@
+
+
 ---
 
-name: My Workflow
+on: [push]
 
-on:
-  workflow_dispatch:
-    
 jobs:
-
-  Checkout:
-    runs-on: ubuntu-latest
-    
-    environment:
-      name: Checkout repo
+  bump-version:
+    name: testaction
+    runs-on: ubuntu-latest  
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v2
 
-  composite_action_job:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    needs: Checkout
-    name: My composite action use
-    steps:
-    - name: First composite action step
-      id: mycompositeaction
-      uses: guithi0777/actions.yml@v1
-      with:
-        your-name: 'Pushpa'
+      - name: testaction
+        id: testaction
+        uses: guithi0777/testaction@v1
+        with:
+          version-type: major
+
+      - name: Get the New Version
+        run: echo "New version is ${{ steps.testaction.outputs.new-version }}"
