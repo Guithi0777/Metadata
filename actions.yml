@@ -1,15 +1,14 @@
-name: 'My Checkout Action'
-description: 'Custom checkout action'
-author: 'Your Name'
+name: 'Testentry'
+description: 'Coucou les Devops'
 inputs:
-  repository:
-    description: 'Repository to checkout'
+  your-name:  
+    description: 'Your Name'
     required: true
-    default: ${{ github.repository }}
-  ref:
-    description: 'Ref to checkout'
-    required: false
-    default: 'refs/heads/main'
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
+    default: 'DevOps'
+  runs:
+  using: "composite"
+  steps:
+    - run: echo Coucou ${{ inputs.your-name }}.
+      shell: bash
+    - run: ${{ github.action_path }}/helloworld.sh
+      shell: bash
