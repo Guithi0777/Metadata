@@ -10,5 +10,5 @@ name: 'Testentry'
   steps:
     - run: echo Coucou ${{ inputs.your-name }}.
       shell: bash
-    - run: ${{ github.action_path }}/helloworld.sh
+    - run: ${{ github.action_path }}/entrypoint.sh
       shell: bash
