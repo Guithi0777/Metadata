@@ -1,3 +1,11 @@
-echo ("TestActions")
+#!/bin/bash
 
-echo::set-ouput name=result::$echo
+
+
+echo "Bonjour, ceci est un script Bash simple."
+
+
+echo ::set-output name=new-version::$echo
+
+exit 0
+
