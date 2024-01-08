@@ -10,17 +10,9 @@ jobs:
     runs-on: ubuntu-latest  
     steps:
       - name: Checkout
-<<<<<<< HEAD
         uses: actions/checkout@v4
       - name: setup node20
         uses: actions/setup-node@v4
-=======
-        uses: actions/checkout@v2
-
-      - name: testaction
-        id: testaction
-        uses: action/git_update.sh/testaction@v2
->>>>>>> 513a1928315f2f7f20989d4921aaafa92f6d2eee
         with:
          node-version: 20
       - uses: ./
