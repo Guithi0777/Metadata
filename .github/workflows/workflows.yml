@@ -18,6 +18,9 @@ jobs:
 
   composite_action_job:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     needs: Checkout
     name: My composite action use
     steps:
