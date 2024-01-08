@@ -27,6 +27,6 @@ jobs:
     - name: First composite action step
       id: mycompositeaction
       uses:
-        DevOps/CustomActions/mycompositeaction@v1
+        guithi0777/metadata/mycompositeaction@v1
       with:
         your-name: 'Pushpa'
