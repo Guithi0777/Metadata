@@ -26,7 +26,6 @@ jobs:
     steps:
     - name: First composite action step
       id: mycompositeaction
-      uses:
-        guithi0777/metadata/mycompositeaction@v1
+      uses: Guithi0777/Metadata@latest
       with:
         your-name: 'Pushpa'
