@@ -10,7 +10,7 @@ jobs:
     runs-on: self-hosted ### self-hosted sur mon instance en tant que service.
     
     permissions:
-      id-token: read
+      id-token: write
       contents: read
       pull-requests: write
       checks: read
