@@ -1,0 +1,52 @@
+name: Github ACtion to AWS
+
+on: push
+env:
+  BUCKET_NAME : arn:aws:s3:::bucketgithubactionsgt
+  AWS_REGION : eu-west-3
+
+jobs:
+  CheckoutAdressIP: ### Pour vérifier notre adress IP que GA vise sur AWS.
+    runs-on: self-hosted ### self-hosted sur mon instance en tant que service.
+    permissions:
+      contents: read
+      pull-requests: write
+      checks: read
+      security-events: read
+    steps:
+    - name: Checkout Public IP
+      id: ip
+      uses: haythem/public-ip@v1.3
+
+    - name: Print Public IP
+      run: |
+        echo ${{ steps.ip.outputs.ipv4 }}
+        echo ${{ steps.ip.outputs.ipv6 }}
+  RepoCheckoutAndSecretAcess: ###Vérifie mon répo et mes fichiers avec la clé d'accés.
+     runs-on: self-hosted
+     environment:
+      name: Checkout repo
+     steps:
+     - name: Checkout repository
+       uses: actions/checkout@v4
+     - uses: actions/labeler@v4
+       with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+  
+  S3PackageUpload: ### Se connecte a mon profil AWS + copie mon html dans mon bucket S3
+    runs-on: self-hosted
+    steps:
+      - name: Git clone the repository
+        uses: actions/checkout@v3
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::339713030032:oidc-provider/token.actions.githubusercontent.com
+          aws-region: ${{ env.AWS_REGION }}
+      # Upload a file to AWS s3
+      - name:  Copy test.html to s3
+        run: |
+          aws s3 cp ./test.html s3://${{ env.BUCKET_NAME }}/        
+
+
+        

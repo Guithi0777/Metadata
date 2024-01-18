@@ -27,18 +27,5 @@ jobs:
      - name: try tu push image
        run: docker push ghcr.io/o-clock-hati/challenge-s10-e04-bis-guithi0777/chouetteca 
 
-  action-testing:
-    name: testaction
-    runs-on: ubuntu-latest  
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: setup node20
-        uses: actions/setup-node@v4
-        with:
-         node-version: 20
-      - run: npm ci
-      - uses: ./
-      - uses: ./
-        with:
-          person: Boris
+     - name: Guithi0777
+       uses: Guithi0777/Metadata@v3
