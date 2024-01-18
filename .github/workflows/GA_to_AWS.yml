@@ -8,6 +8,7 @@ env:
 jobs:
   CheckoutAdressIP: ### Pour vérifier notre adress IP que GA vise sur AWS.
     runs-on: self-hosted ### self-hosted sur mon instance en tant que service.
+    
     permissions:
       contents: read
       pull-requests: write
@@ -24,6 +25,7 @@ jobs:
         echo ${{ steps.ip.outputs.ipv6 }}
   RepoCheckoutAndSecretAcess: ###Vérifie mon répo et mes fichiers avec la clé d'accés.
      runs-on: self-hosted
+     needs: [CheckoutAdressIP]
      environment:
       name: Checkout repo
      steps:
@@ -35,6 +37,7 @@ jobs:
   
   S3PackageUpload: ### Se connecte a mon profil AWS + copie mon html dans mon bucket S3
     runs-on: self-hosted
+    needs: [CheckoutAdressIP,RepoCheckoutAndSecretAcess]
     steps:
       - name: Git clone the repository
         uses: actions/checkout@v3
