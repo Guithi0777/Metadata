@@ -1,0 +1,24 @@
+FROM node:current-alpine AS builder
+
+ENV VITE_PROMO=Hati
+ENV VITE_ENV=dev
+
+WORKDIR /app
+COPY package*.json ./
+
+EXPOSE 5173
+RUN npm install
+
+COPY . .
+
+FROM node:current-alpine AS prod
+
+RUN npm install -g serve
+
+COPY --from=builder /app/dist /app
+
+WORKDIR
+
+EXPOSE 80
+
+CMD ["serve",
