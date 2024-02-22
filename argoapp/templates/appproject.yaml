@@ -1,8 +1,8 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: mathieu
-  namespace: mathieu-argo
+  name: tguillaume-appproject
+  namespace: tguillaume
 spec:
   description: demo d'une application geree as code
   destinations:
