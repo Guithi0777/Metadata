@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: mathieu
+  namespace: mathieu-argo
+spec:
+  description: demo d'une application geree as code
+  destinations:
+  - name: in-cluster
+    namespace: tguillaume
+    server: https://kubernetes.default.svc
+  sourceRepos:
+  - https://github.com/O-clock-Hati/demo-argo-app.git
+status: {}

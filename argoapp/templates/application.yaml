@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: iaaaac-tguillaume-test
+  namespace: mathieu-argo
+spec:
+  destination:
+    namespace: tguillaume
+    server: https://kubernetes.default.svc
+  project: mathieu
+  source:
+    helm:
+      valueFiles:
+      - values.yaml
+    path: helmchart
+    repoURL: https://github.com/Guithi0777/Metadata.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated: {}
