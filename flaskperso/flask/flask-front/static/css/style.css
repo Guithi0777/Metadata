@@ -1,0 +1,37 @@
+/* Style de base pour le bouton */
+#histoire-suivante {
+    background-color: #007bff; /* Couleur de fond */
+    color: white; /* Couleur du texte */
+    padding: 10px 20px; /* Espacement du texte à l'intérieur du bouton */
+    font-size: 16px; /* Taille de la police */
+    border: none; /* Pas de bordure */
+    border-radius: 5px; /* Coins arrondis */
+    cursor: pointer; /* Curseur de souris */
+    transition: background-color 0.3s; /* Animation de transition */
+}
+
+/* Style du bouton au survol */
+#histoire-suivante:hover {
+    background-color: #0056b3; /* Couleur de fond au survol */
+}
+
+
+
+/* Pour centrer le bouton horizontalement */
+body {
+	    display: flex;
+	        justify-content: center;
+		    align-items: center;
+		        height: 100vh; /* Pour centrer verticalement */
+		}
+/* Style du bouton */
+#histoire-suivante {
+    margin-top: 20px; /* Ajouter de l'espace en haut du bouton */
+    margin-bottom: 20px; /* Ajouter de l'espace en bas du bouton */
+}
+
+/* Style du texte de l'histoire */
+#fenetre-histoire {
+    margin-top: 20px; /* Ajouter de l'espace en haut du texte de l'histoire */
+    margin-bottom: 20px; /* Ajouter de l'espace en bas du texte de l'histoire */
+}
